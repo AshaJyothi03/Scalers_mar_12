@@ -1,0 +1,94 @@
+#ROBUST SCALER
+#Xscaled= X-Q2/Q3-Q1
+
+from sklearn.preprocessing import RobustScaler
+import numpy as np
+import pandas as pd
+data=np.array([[1],[2],[3],[4],[5]])
+df=pd.DataFrame(data,columns=['data'])
+print(df.describe())
+
+scaler=RobustScaler()
+robust_data = scaler.fit_transform(data)
+print(robust_data)
+
+
+'''
+from sklearn.preprocessing import RobustScaler
+import numpy as np
+import pandas as pd
+
+# Create the DataFrame
+df = np.array([[1], [2], [3], [4], [5], [6]])
+df = pd.DataFrame(df, columns=['value'])
+
+# Scale the data using RobustScaler
+scaler = RobustScaler()
+b = scaler.fit_transform(df)
+print("Scaled Data:")
+print(b)
+
+# Calculate descriptive statistics
+desc_stats = df.describe()
+print("\nDescriptive Statistics:")
+print(desc_stats)
+
+# Calculate IQR
+Q1 = desc_stats.loc['25%']['value']  # First quartile
+Q3 = desc_stats.loc['75%']['value']  # Third quartile
+IQR = Q3 - Q1
+print(f"\nInterquartile Range (IQR): {IQR}")
+
+# Calculate lower and upper bounds for outliers
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+print(f"Lower Bound for Outliers: {lower_bound}")
+print(f"Upper Bound for Outliers: {upper_bound}")
+
+# Identify outliers
+outliers = df[(df['value'] < lower_bound) | (df['value'] > upper_bound)]
+print("\nOutliers:")
+print(outliers)
+'''
+
+'''
+from sklearn.preprocessing import RobustScaler
+import numpy as np
+import pandas as pd
+
+# Create a NumPy array
+df = np.array([[1], [2], [3], [4], [5],[6]])
+
+# Convert the NumPy array to a pandas DataFrame
+df = pd.DataFrame(df, columns=['value'])
+
+# Initialize the RobustScaler
+scaler = RobustScaler()
+
+# Fit and transform the data
+b = scaler.fit_transform(df)
+
+# Print the scaled data
+print("Scaled Data:")
+print(b)
+
+# Sort the values to calculate Q1 and Q3 manually
+sorted_values = np.sort(df['value'])
+
+# Calculate Q1 (25th percentile) and Q3 (75th percentile)
+n = len(sorted_values)
+
+# Q1 is the value at the 25th percentile
+Q1_index = int(n * 0.25)
+Q1 = sorted_values[Q1_index]
+
+# Q3 is the value at the 75th percentile
+Q3_index = int(n * 0.75)
+Q3 = sorted_values[Q3_index]
+
+# Calculate IQR
+IQR = Q3 - Q1
+
+print(f"\nInterquartile Range (IQR): {IQR}")
+'''
