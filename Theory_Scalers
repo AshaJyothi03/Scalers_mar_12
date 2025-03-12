@@ -1,0 +1,99 @@
+#Standard scalar module:
+In python from sklearn.preprocessing features by removing the mean, and scaling to unit variance.
+
+FORMULA:
+--------
+ Xscaled=x-mu/sigma
+
+  where x is orginal feature value
+
+  mu mean of feauture column
+
+  sigma - std deviation of feauture column
+
+This ensures that mean should be 0 and a standard deviation of 1
+
+            compute the mean for each column
+
+            compute the standard deviation for each column
+
+            apply  the standardization xscaled
+            x=[[10],[20],[30],[40]]
+            mean=100/4 = 25
+
+            standard deviation :/ calculate Xscaled value
+            sqrt(((x1-25)^2+(x2-25)^2+(x3-25)^2+(x4-25)^2)/(No.of values))=15
+
+            we got mu and sigma value now substitute values
+
+            x1-m/sigma,x2-m/sigma,x3-m/sigma,x4-m/sigma
+
+#min-max scaler:
+--It is the a feature scaling technique provided by sklearn.preprocessing it transforms feautures to a fixed range 0 and 1.
+
+--It is used in ML to ensure that all features have same scale,improving the model performance.
+
+xscaled=x-xmin/xmax-xmin
+x=[[10],[20],[30],[40],[50]]
+x-original value
+
+FOR FEATURE RANGE(-1,1):
+-------------------------
+Xscaled=(x-xmin/(xmax-xmin))*(b-a)+a
+
+USAGE OF MINMAX SCALER:
+-------------------------
+
+1. when feature ranges vary siginificantly and need to be brought to a uniform scale.
+2. when data is not normally distributed unlike standardscaler when assumes normality
+3. when using distance-based ml models(ex: KNN,K-Means,SVM)
+where feature magnitude effects distance calculations
+4. when input values must be bounded (ex:Neural networks benefits from [0,1] scaling)
+
+
+#maxabs scaler:
+---------------
+
+    It is used to feactures scaling, its scale each feature by its maximum absolute value, ensuring all values fall with in the range of (-1,1) without the distorting original distribution.
+
+    Xscaled= Xi/max(|X|)
+    
+    ex:[10,20,30,40,50]
+
+    10/50 =0.2
+    
+    20/50=0.4
+
+    30/50=0.6
+
+    40/50=0.8
+    
+    50/50=1
+
+
+#Robust Scaler:
+----------------
+
+    It is used for scaling numerical data by removing the median value and scaling it based on interquartile range(QR). It makes it robust outliers, unlike standard scaler which is affected by extreame values.
+
+  FORMUlA:
+  -------
+  Xscaled= X-Q2/Q3-Q1
+      here x is original value
+
+      Q1,Q2,Q3 are quartile values
+
+      Q1 is first quartile value - 25% value
+
+      Q2 is median value  -50% value
+
+      Q3 is IQR -75% value
+
+      IQR=Q3-Q1
+
+
+ex: [1,2,3,4,5]
+
+Q1=1
+Q2=3
+Q3=4-1 =3
