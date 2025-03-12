@@ -1,0 +1,17 @@
+#MAXABS SCALER
+from sklearn.preprocessing import MaxAbsScaler
+import numpy as np
+data=np.array([[10],[20],[30],[40]])
+scaler=MaxAbsScaler()
+maxabs_data = scaler.fit_transform(data)
+print(maxabs_data)
+
+'''
+
+from sklearn.preprocessing import MaxAbsScaler
+import numpy as np
+data=np.array([[10,21,32],[20,31,43],[30,41,56],[40,51,76],[50,67,76]])
+scaler=MaxAbsScaler()
+maxabs_data = scaler.fit_transform(data)
+print(maxabs_data)
+'''
